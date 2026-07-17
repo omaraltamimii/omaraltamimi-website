@@ -71,7 +71,16 @@ const TIMELINE: Entry[] = [
       'On 03 August 2025, I started my first engineering internship at KRONES AG.',
       'Joined the Mechanical Development department, contributing to the development of packaging machines.',
       'First professional engineering experience — confirmed my passion for mechanical product development.',
-      'After completing the internship in December 2025, I continued directly as a Working Student in Development at KRONES.',
+      'Completed the internship in November 2025.',
+    ],
+    highlight: true,
+  },
+  {
+    year: '2025',
+    title: 'Working Student in Development at KRONES',
+    points: [
+      'In December 2025, I continued directly at KRONES as a Working Student in Development.',
+      'Further contributing to mechanical product development and packaging machine engineering.',
     ],
     highlight: true,
   },
