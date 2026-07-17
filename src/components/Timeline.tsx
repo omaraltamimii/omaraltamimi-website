@@ -38,8 +38,8 @@ const TIMELINE: Entry[] = [
     year: '2021',
     title: 'Began studying engineering in Germany',
     points: [
-      'Enrolled at Hochschule Kaiserslautern in October — the only option allowing off-cycle admission.',
-      'Many required courses were not offered every semester, forcing up to 15 examinations within a limited timeframe.',
+      'Enrolled at Hochschule Kaiserslautern in October — the Ausländerbehörde required an Immatrikulationsbescheinigung to issue my residence permit, so I enrolled there to secure it, hoping to transfer to Munich later.',
+      'Then came the qualification issue — many required courses were not offered every semester, forcing up to 15 examinations within a limited timeframe.',
       'Worked as Lieferando delivery driver, moving assistant, painter, cleaning assistant and restaurant waiter to finance my studies.',
       'Despite my efforts, earned only 5 ECTS during my first academic year.',
     ],
