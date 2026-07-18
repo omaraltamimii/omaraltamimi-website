@@ -69,17 +69,29 @@ export default function Engineering() {
           <div className="card flex flex-col justify-between p-6">
             <p className="eyebrow">Gallery</p>
             <div className="mt-4 grid grid-cols-3 gap-2">
-              {Array.from({ length: 6 }).map((_, i) => (
+              {[
+                "/images/Frame_1511.png",
+                "/images/KronesOmar.jpg",
+                "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg",
+                "/images/Frame_1511.png",
+                "/images/KronesOmar.jpg",
+                "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg",
+              ].map((src, i) => (
                 <div
                   key={i}
                   className="relative aspect-square overflow-hidden rounded-md border border-ink-500/70"
                 >
-                  <div className="grid-bg-fine absolute inset-0 opacity-40" />
+                  <img
+                    src={src}
+                    alt={`Engineering work ${i + 1}`}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    loading="lazy"
+                  />
                   <div
                     className="absolute inset-0"
                     style={{
                       background:
-                        "linear-gradient(140deg, rgba(22,32,44,0.4), rgba(10,15,20,0.9))",
+                        "linear-gradient(140deg, rgba(22,32,44,0.1), rgba(10,15,20,0.55))",
                     }}
                   />
                 </div>

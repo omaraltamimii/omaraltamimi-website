@@ -21,12 +21,17 @@ export default function About() {
           className="lg:col-span-5"
         >
           <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-ink-500">
-            <div className="grid-bg-fine absolute inset-0 opacity-30" />
+            <img
+              src="/images/KronesOmar.jpg"
+              alt="Omar Al Tamimi at KRONES"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="lazy"
+            />
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(160deg, rgba(22,32,44,0.3) 0%, rgba(10,15,20,0.95) 100%)",
+                  "linear-gradient(180deg, rgba(10,15,20,0.1) 0%, rgba(10,15,20,0.5) 55%, rgba(10,15,20,0.92) 100%)",
               }}
             />
             <div className="absolute inset-0 flex flex-col justify-between p-6">

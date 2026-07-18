@@ -81,12 +81,17 @@ export default function Hero() {
             transition={{ duration: 0.9, ease, delay: 0.15 }}
             className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-ink-500"
           >
-            <div className="grid-bg-fine absolute inset-0 opacity-30" />
+            <img
+              src="/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg"
+              alt="Omar Al Tamimi portrait"
+              className="absolute inset-0 h-full w-full object-cover"
+              loading="eager"
+            />
             <div
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(160deg, rgba(22,32,44,0.4) 0%, rgba(10,15,20,0.9) 100%)",
+                  "linear-gradient(180deg, rgba(10,15,20,0.1) 0%, rgba(10,15,20,0.55) 55%, rgba(10,15,20,0.92) 100%)",
               }}
             />
             <div className="absolute inset-0 flex flex-col justify-between p-6">
