@@ -1,137 +1,107 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Instagram, Linkedin, Github, Mail, Send, Check } from 'lucide-react'
-import { Section, SectionHeader } from './Section'
-import { SOCIALS } from '../data/site'
+import { motion } from "framer-motion";
+import { Mail, Send } from "lucide-react";
+import Section from "./Section";
+import { contact } from "../data/site";
 
-const SOCIAL_LINKS = [
-  { label: 'Instagram', href: SOCIALS.instagram, icon: Instagram },
-  { label: 'LinkedIn', href: SOCIALS.linkedin, icon: Linkedin },
-  { label: 'GitHub', href: SOCIALS.github, icon: Github },
-  { label: 'Email', href: SOCIALS.email, icon: Mail },
-]
-
-const fade = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
-  const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSent(true)
-    setForm({ name: '', email: '', message: '' })
-    setTimeout(() => setSent(false), 4000)
-  }
-
   return (
-    <Section id="contact">
-      <div className="container-lux section-pad">
-        <SectionHeader
-          eyebrow="Contact"
-          title={
-            <>
-              Let's build
-              <br className="hidden md:block" /> something meaningful.
-            </>
-          }
-          description="Engineering projects, collaborations, mentoring or business — reach out and let's talk."
-        />
-
-        <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.2fr]">
-          {/* Socials */}
-          <motion.div
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            className="flex flex-col gap-4"
+    <Section
+      id="contact"
+      eyebrow="Contact"
+      title="Let's build something engineered to last"
+      subtitle="Engineering projects, collaborations, mentoring, or just a conversation — I read every message."
+    >
+      <div className="grid gap-10 lg:grid-cols-12">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease }}
+          className="lg:col-span-5"
+        >
+          <a
+            href={`mailto:${contact.email}`}
+            className="card group flex items-center gap-4 p-5"
           >
-            {SOCIAL_LINKS.map((s) => (
+            <div className="flex h-11 w-11 items-center justify-center rounded-md border border-ink-500 text-bone-50 transition-colors duration-300 group-hover:border-accent group-hover:text-accent">
+              <Mail size={18} />
+            </div>
+            <div>
+              <p className="eyebrow">Email</p>
+              <p className="mt-1 text-sm text-bone-50">{contact.email}</p>
+            </div>
+          </a>
+
+          <div className="mt-4 grid grid-cols-3 gap-3">
+            {contact.socials.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
-                target={s.href.startsWith('http') ? '_blank' : undefined}
+                target="_blank"
                 rel="noreferrer"
-                className="group flex items-center justify-between rounded-2xl glass p-5 transition-all duration-300 hover:border-ember/40 hover:-translate-y-0.5"
+                className="card flex items-center justify-center px-3 py-5 text-sm text-bone-300 transition-colors duration-300 hover:text-bone-50"
               >
-                <span className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-ember/10 text-ember transition-colors group-hover:bg-ember/20">
-                    <s.icon size={18} />
-                  </span>
-                  <span className="text-white">{s.label}</span>
-                </span>
-                <span className="text-xs text-muted transition-colors group-hover:text-ember">
-                  Connect →
-                </span>
+                {s.label}
               </a>
             ))}
-          </motion.div>
+          </div>
+        </motion.div>
 
-          {/* Form */}
-          <motion.form
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            onSubmit={submit}
-            className="rounded-3xl glass-strong p-7 md:p-8"
-          >
-            <div className="grid gap-5">
-              <div>
-                <label className="eyebrow mb-2 block">Name</label>
-                <input
-                  required
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-white outline-none transition-colors placeholder:text-muted/60 focus:border-ember/50"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="eyebrow mb-2 block">Email</label>
-                <input
-                  required
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-white outline-none transition-colors placeholder:text-muted/60 focus:border-ember/50"
-                  placeholder="you@email.com"
-                />
-              </div>
-              <div>
-                <label className="eyebrow mb-2 block">Message</label>
-                <textarea
-                  required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3 text-white outline-none transition-colors placeholder:text-muted/60 focus:border-ember/50"
-                  placeholder="Tell me about your project or question..."
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={sent}
-                className="btn-ember disabled:opacity-70"
-              >
-                {sent ? (
-                  <>
-                    Message sent <Check size={16} />
-                  </>
-                ) : (
-                  <>
-                    Send message <Send size={16} />
-                  </>
-                )}
-              </button>
-            </div>
-          </motion.form>
-        </div>
+        <motion.form
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease, delay: 0.08 }}
+          onSubmit={(e) => e.preventDefault()}
+          className="card lg:col-span-7 grid gap-4 p-7"
+        >
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="Name" name="name" placeholder="Your name" />
+            <Field label="Email" name="email" type="email" placeholder="your@email.com" />
+          </div>
+          <Field label="Subject" name="subject" placeholder="What is this about?" />
+          <label className="flex flex-col gap-2">
+            <span className="eyebrow">Message</span>
+            <textarea
+              name="message"
+              rows={5}
+              required
+              placeholder="Tell me a bit about your project or question."
+              className="resize-none rounded-md border border-ink-500 bg-ink-800/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-400 focus:border-accent focus:outline-none"
+            />
+          </label>
+          <button type="submit" className="btn-primary self-start">
+            Send Message <Send size={15} />
+          </button>
+        </motion.form>
       </div>
     </Section>
-  )
+  );
+}
+
+function Field({
+  label,
+  name,
+  type = "text",
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  placeholder?: string;
+}) {
+  return (
+    <label className="flex flex-col gap-2">
+      <span className="eyebrow">{label}</span>
+      <input
+        name={name}
+        type={type}
+        required
+        placeholder={placeholder}
+        className="rounded-md border border-ink-500 bg-ink-800/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-400 focus:border-accent focus:outline-none"
+      />
+    </label>
+  );
 }

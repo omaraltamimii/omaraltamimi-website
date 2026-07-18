@@ -1,106 +1,137 @@
-import { motion } from 'framer-motion'
-import { Section, SectionHeader } from './Section'
-import { FULL_TITLE } from '../data/site'
+import { motion } from "framer-motion";
+import Section from "./Section";
+import { quickFacts, timeline } from "../data/site";
 
-const TRAITS = [
-  'Final-Year Production & Automation Engineering Student',
-  'Based in Munich, Germany',
-  'Passionate about Engineering',
-  'Entrepreneur',
-  'Technology enthusiast',
-  'Problem Solver',
-  'Athlete',
-  'Creator',
-  'Lifelong learner',
-  'Focused on self improvement',
-]
-
-const fade = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
-}
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function About() {
   return (
-    <Section id="about">
-      <div className="container-lux section-pad">
-        <SectionHeader
-          eyebrow="About"
-          title={
-            <>
-              A discipline built on
-              <br className="hidden md:block" /> engineering and ambition.
-            </>
-          }
-        />
-
-        <div className="mt-16 grid gap-10 lg:grid-cols-[1.4fr_1fr]">
-          {/* Portrait placeholder */}
-          <motion.div
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            className="relative aspect-[4/5] overflow-hidden rounded-3xl glass"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-ember/15 via-ink-card to-ink-base" />
+    <Section
+      id="about"
+      eyebrow="About"
+      title="From Palestine to the heart of German engineering"
+      subtitle="Building a career through engineering, resilience, and continuous growth."
+    >
+      <div className="grid gap-12 lg:grid-cols-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease }}
+          className="lg:col-span-5"
+        >
+          <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-ink-500">
+            <div className="grid-bg-fine absolute inset-0 opacity-30" />
             <div
-              className="absolute inset-0 opacity-40"
+              className="absolute inset-0"
               style={{
-                backgroundImage:
-                  'radial-gradient(circle at 50% 30%, rgba(199,90,18,0.35), transparent 55%)',
+                background:
+                  "linear-gradient(160deg, rgba(22,32,44,0.3) 0%, rgba(10,15,20,0.95) 100%)",
               }}
             />
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <p className="font-display text-3xl text-white">Omar Al Tamimi</p>
-              <p className="mt-2 text-sm text-muted">{FULL_TITLE}</p>
-            </div>
-            <motion.div
-              className="absolute right-6 top-6 h-14 w-14 rounded-full border border-ember/30"
-              animate={{ y: [0, -12, 0] }}
-              transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          </motion.div>
-
-          {/* Identity + mission */}
-          <motion.div
-            variants={fade}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: '-80px' }}
-            className="flex flex-col justify-between gap-8"
-          >
-            <div>
-              <p className="text-lg leading-relaxed text-white/90">
-                I am a {FULL_TITLE.toLowerCase()} based in Munich, Germany,
-                passionate about engineering, entrepreneurship and building
-                meaningful businesses while inspiring others through
-                discipline, innovation and continuous growth.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-2">
-                {TRAITS.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1.5 text-xs text-muted transition-colors hover:border-ember/40 hover:text-white"
-                  >
-                    {t}
-                  </span>
-                ))}
+            <div className="absolute inset-0 flex flex-col justify-between p-6">
+              <span className="eyebrow">Portrait</span>
+              <div>
+                <p className="font-sans text-xl font-semibold text-bone-50">
+                  Omar Al Tamimi
+                </p>
+                <p className="mt-1 text-sm text-bone-400">
+                  Munich, Germany
+                </p>
               </div>
             </div>
+          </div>
 
-            <div className="rounded-2xl glass p-6">
-              <p className="eyebrow text-ember">Mission</p>
-              <p className="mt-3 text-base leading-relaxed text-white/90">
-                To combine engineering, entrepreneurship, technology and
-                athletic performance into products, businesses and content that
-                positively impact people's lives.
-              </p>
-            </div>
+          <div className="mt-8 card p-6">
+            <p className="eyebrow mb-3">Mission</p>
+            <p className="text-sm leading-relaxed text-bone-300">
+              To become a Mechanical Product Development Engineer who builds
+              innovative, well-engineered products — while helping other
+              international students navigate the same path with clarity and
+              confidence.
+            </p>
+          </div>
+        </motion.div>
+
+        <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+          >
+            <p className="eyebrow mb-4">Quick Facts</p>
+            <ul className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-ink-500/70 bg-ink-500/30 sm:grid-cols-2">
+              {quickFacts.map((f) => (
+                <li
+                  key={f.label}
+                  className="flex items-center gap-3 bg-ink-700/60 px-4 py-3 text-sm text-bone-300"
+                >
+                  <span className="text-base">{f.icon}</span>
+                  <span>{f.label}</span>
+                </li>
+              ))}
+            </ul>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease, delay: 0.15 }}
+            className="mt-8 card p-6"
+          >
+            <p className="eyebrow mb-3">Philosophy</p>
+            <p className="text-sm leading-relaxed text-bone-300">
+              Greatness is built through consistency, not shortcuts. Engineering
+              is precision, patience and purpose — the same values I bring to
+              every project, every collaboration, and every student I mentor.
+            </p>
+          </motion.div>
+
+          <div className="mt-12">
+            <p className="eyebrow mb-6">Journey</p>
+            <Timeline />
+          </div>
         </div>
       </div>
     </Section>
-  )
+  );
+}
+
+function Timeline() {
+  return (
+    <ol className="relative border-l border-ink-500/70 pl-6">
+      {timeline.map((item, i) => (
+        <motion.li
+          key={item.date + item.title}
+          initial={{ opacity: 0, x: -12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease, delay: i * 0.04 }}
+          className="relative pb-8 last:pb-0"
+        >
+          <span className="absolute -left-[31px] top-1.5 flex h-3 w-3 items-center justify-center">
+            <span className="h-3 w-3 rounded-full border border-accent bg-ink-900" />
+            <span className="absolute h-3 w-3 animate-ping rounded-full bg-accent/30" />
+          </span>
+
+          <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+            <p className="font-mono text-xs text-accent">{item.date}</p>
+            {item.tag && (
+              <span className="rounded-full border border-ink-500 px-2.5 py-0.5 text-[10px] uppercase tracking-widest2 text-bone-400">
+                {item.tag}
+              </span>
+            )}
+          </div>
+          <h3 className="mt-1.5 font-sans text-lg font-semibold tracking-tight text-bone-50">
+            {item.title}
+          </h3>
+          <p className="mt-1.5 text-sm leading-relaxed text-bone-300">
+            {item.body}
+          </p>
+        </motion.li>
+      ))}
+    </ol>
+  );
 }

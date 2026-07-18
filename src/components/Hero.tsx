@@ -1,323 +1,133 @@
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Building2,
-  Rocket,
-  GraduationCap,
-  Shield,
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { site } from "../data/site";
 
-const container = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.3,
-    },
-  },
-};
-
-const item = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
-
-const EXPERIENCE = [
-  {
-    icon: Building2,
-    title: "KRONES AG",
-    subtitle: "Mechanical Product Development",
-    description:
-      "Developing industrial packaging machinery through CAD engineering, product development, engineering documentation and manufacturing-oriented design.",
-  },
-  {
-    icon: Rocket,
-    title: "FlightLab",
-    subtitle: "Structural Development",
-    description:
-      "Structural development of unmanned aircraft systems with a focus on lightweight structures, engineering documentation and design for manufacturing.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Munich University of Applied Sciences",
-    subtitle: "Production & Automation Engineering",
-    description:
-      "Final-Year Production & Automation Engineering student specializing in mechanical product development, CAD engineering and manufacturing systems.",
-  },
-  {
-    icon: Shield,
-    title: "WolvesMacht",
-    subtitle: "Founder",
-    description:
-      "Building a premium performance brand inspired by engineering, discipline and continuous self-improvement.",
-  },
-];
-
-const STATS = [
-  {
-    value: "2+",
-    label: "Industrial Engineering Positions",
-  },
-  {
-    value: "2",
-    label: "Engineering Companies",
-  },
-  {
-    value: "6+",
-    label: "Years in Germany",
-  },
-  {
-    value: "1",
-    label: "Startup in Development",
-  },
-];
-
-const go = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({
-    behavior: "smooth",
-  });
-};
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center overflow-hidden section-pad pt-28"
+      className="relative flex min-h-screen items-center overflow-hidden pt-24"
     >
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="container-lux relative z-20"
-      >
-        {/* Location Badge */}
-        <motion.div variants={item}>
-          <span className="inline-flex items-center rounded-full border border-orange-500/20 bg-orange-500/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-orange-400">
-            Mechanical Product Development • Munich, Germany
-          </span>
-        </motion.div>
+      <div className="container-wide grid items-center gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="eyebrow mb-6"
+          >
+            {site.role} · {site.location}
+          </motion.p>
 
-        {/* Name */}
-        <motion.h1
-          variants={item}
-          className="mt-8 text-6xl font-black leading-[0.9] tracking-tight text-white md:text-8xl xl:text-[7rem]"
-        >
-          Omar
-          <br />
-          <span className="text-orange-500">Al Tamimi</span>
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.05 }}
+            className="font-sans text-4xl font-semibold leading-[1.02] tracking-tightest text-bone-50 sm:text-5xl md:text-6xl lg:text-7xl"
+          >
+            Omar Al Tamimi
+          </motion.h1>
 
-        {/* Subtitle */}
-        <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
-          {[
-            "Mechanical Product Development",
-            "CAD Engineering",
-            "Entrepreneur",
-            "Weighted Calisthenics",
-          ].map((role) => (
-            <span
-              key={role}
-              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-gray-300 backdrop-blur-md"
-            >
-              {role}
-            </span>
-          ))}
-        </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.12 }}
+            className="mt-6 max-w-xl text-lg leading-relaxed text-bone-300"
+          >
+            Production & Automation Engineering student in Munich. Mechanical
+            product development, CAD engineering, structural development, and
+            founder of WolvesMacht — building a career through engineering,
+            resilience, and continuous growth.
+          </motion.p>
 
-        {/* University */}
-        <motion.p
-          variants={item}
-          className="mt-8 text-sm uppercase tracking-[0.25em] text-orange-400"
-        >
-          Final-Year Production & Automation Engineering Student
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease, delay: 0.2 }}
+            className="mt-9 flex flex-wrap gap-3"
+          >
+            <a href="#engineering" className="btn-primary">
+              Engineering Portfolio <ArrowUpRight size={16} />
+            </a>
+            <a href="#work" className="btn-ghost">
+              Work With Me
+            </a>
+            <a href="#contact" className="btn-ghost">
+              Contact Me
+            </a>
+          </motion.div>
 
-        <motion.p variants={item} className="mt-2 text-lg text-gray-400">
-          Munich University of Applied Sciences (HM)
-        </motion.p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease, delay: 0.4 }}
+            className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ink-500/60 pt-6"
+          >
+            {site.companies.map((c) => (
+              <div key={c.name} className="flex flex-col">
+                <span className="font-mono text-xs text-bone-50">{c.name}</span>
+                <span className="text-[11px] text-bone-400">{c.role}</span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
 
-        {/* Main Headline */}
-        <motion.h2
-          variants={item}
-          className="mt-10 max-w-5xl text-4xl font-light leading-tight text-white md:text-6xl"
-        >
-          Engineering Products.
-          <br />
-          <span className="font-semibold text-orange-500">
-            Building Businesses.
-          </span>
-          <br />
-          Inspiring Performance.
-        </motion.h2>
-
-        {/* Description */}
-        <motion.p
-          variants={item}
-          className="mt-10 max-w-4xl text-lg leading-9 text-gray-400"
-        >
-          I specialize in mechanical product development, CAD engineering
-          and design for manufacturing while completing my final year in
-          Production & Automation Engineering at Munich University of
-          Applied Sciences.
-          <br />
-          <br />
-          Alongside my studies, I have gained industrial engineering
-          experience at{" "}
-          <span className="font-semibold text-orange-400">KRONES AG</span>{" "}
-          in mechanical product development and at{" "}
-          <span className="font-semibold text-orange-400">FlightLab</span>{" "}
-          in structural development for unmanned aircraft systems,
-          contributing to engineering solutions ready for manufacturing.
-          <br />
-          <br />
-          This website serves as my professional portfolio, documenting my
-          engineering journey, entrepreneurial ventures and athletic
-          development while sharing practical resources for engineering
-          students and aspiring engineers.
-        </motion.p>
-
-        {/* Buttons */}
-        <motion.div variants={item} className="mt-12 flex flex-wrap gap-4">
-          <button onClick={() => go("engineering")} className="btn-ember">
-            Engineering Portfolio
-            <ArrowRight size={18} />
-          </button>
-
-          <button onClick={() => go("services")} className="btn-ghost">
-            Engineering Services
-          </button>
-
-          <button onClick={() => go("contact")} className="btn-ghost">
-            Let's Work Together
-          </button>
-        </motion.div>
-
-        {/* Professional Experience */}
-        <motion.div
-          variants={item}
-          className="mt-20 grid gap-6 lg:grid-cols-2 xl:grid-cols-4"
-        >
-          {EXPERIENCE.map((exp) => {
-            const Icon = exp.icon;
-
-            return (
-              <motion.div
-                key={exp.title}
-                whileHover={{
-                  y: -10,
-                  scale: 1.03,
-                }}
-                transition={{
-                  duration: 0.25,
-                }}
-                className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-7 backdrop-blur-xl transition-all hover:border-orange-500/40 hover:bg-white/[0.05]"
-              >
-                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-orange-500/10 blur-3xl transition-all duration-500 group-hover:bg-orange-500/20" />
-
-                <div className="relative z-10">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 text-orange-400">
-                    <Icon size={28} />
-                  </div>
-
-                  <h3 className="mt-7 text-xl font-bold text-white">
-                    {exp.title}
-                  </h3>
-
-                  <p className="mt-2 text-orange-400 font-medium">
-                    {exp.subtitle}
-                  </p>
-
-                  <div className="my-6 h-px bg-gradient-to-r from-orange-500/60 to-transparent" />
-
-                  <p className="text-sm leading-7 text-gray-400">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-
-        {/* Statistics */}
-        <motion.div
-          variants={item}
-          className="mt-20 grid grid-cols-2 gap-6 md:grid-cols-4"
-        >
-          {STATS.map((stat) => (
+        <div className="lg:col-span-5">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease, delay: 0.15 }}
+            className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-ink-500"
+          >
+            <div className="grid-bg-fine absolute inset-0 opacity-30" />
             <div
-              key={stat.label}
-              className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur-xl"
-            >
-              <h2 className="text-5xl font-black text-orange-500">
-                {stat.value}
-              </h2>
-
-              <p className="mt-3 text-sm uppercase tracking-[0.18em] text-gray-400">
-                {stat.label}
-              </p>
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(160deg, rgba(22,32,44,0.4) 0%, rgba(10,15,20,0.9) 100%)",
+              }}
+            />
+            <div className="absolute inset-0 flex flex-col justify-between p-6">
+              <div className="flex items-center justify-between">
+                <span className="eyebrow">OAT / 2026</span>
+                <span className="h-2 w-2 rounded-full bg-accent" />
+              </div>
+              <div>
+                <p className="font-mono text-xs text-bone-400">
+                  Munich University of Applied Sciences
+                </p>
+                <p className="mt-1 font-sans text-2xl font-semibold tracking-tight text-bone-50">
+                  Production & Automation Engineering
+                </p>
+                <div className="mt-4 grid grid-cols-2 gap-3 text-[11px] text-bone-400">
+                  <div>
+                    <p className="text-bone-50">KRONES AG</p>
+                    <p>Mechanical Product Dev.</p>
+                  </div>
+                  <div>
+                    <p className="text-bone-50">FlightLab</p>
+                    <p>Structural Development</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
+      </div>
 
-        {/* Closing CTA */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2">
         <motion.div
-          variants={item}
-          className="mt-24 overflow-hidden rounded-[40px] border border-white/10 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-14"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="flex flex-col items-center gap-2 text-bone-400"
         >
-          <h2 className="text-4xl font-bold text-white">
-            Engineering.
-            <br />
-            Entrepreneurship.
-            <br />
-            Performance.
-          </h2>
-
-          <p className="mt-6 max-w-3xl text-lg leading-9 text-gray-400">
-            From industrial machinery at KRONES AG, to unmanned aircraft
-            development at FlightLab, to building WolvesMacht, my goal is
-            to combine engineering, entrepreneurship and disciplined
-            execution into products that create real impact.
-          </p>
-
-          <div className="mt-12 flex flex-wrap gap-4">
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              Mechanical Product Development
-            </span>
-
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              CAD Engineering
-            </span>
-
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              Design for Manufacturing
-            </span>
-
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              Product Design
-            </span>
-
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              Entrepreneurship
-            </span>
-
-            <span className="rounded-full bg-orange-500/10 px-5 py-3 text-orange-400">
-              Weighted Calisthenics
-            </span>
-          </div>
+          <span className="font-mono text-[10px] tracking-widest2">SCROLL</span>
+          <div className="h-10 w-px bg-gradient-to-b from-accent to-transparent" />
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
-
-

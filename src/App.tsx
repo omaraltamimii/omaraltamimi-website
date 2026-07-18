@@ -1,53 +1,44 @@
-import { useEffect, useState } from 'react'
-import Loader from './components/Loader'
-import Cursor from './components/Cursor'
-import ScrollProgress from './components/ScrollProgress'
-import BackToTop from './components/BackToTop'
-import Navigation from './components/Navigation'
-import AnimatedBackground from './components/AnimatedBackground'
-import Hero from './components/Hero'
-import About from './components/About'
-import Timeline from './components/Timeline'
-import Engineering from './components/Engineering'
-import Entrepreneurship from './components/Entrepreneurship'
-import Sports from './components/Sports'
-import Services from './components/Services'
-import PersonalBrand from './components/PersonalBrand'
-import Blog from './components/Blog'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import AnimatedBackground from "./components/AnimatedBackground";
+import Cursor from "./components/Cursor";
+import ScrollProgress from "./components/ScrollProgress";
+import Navigation from "./components/Navigation";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Engineering from "./components/Engineering";
+import WorkWithMe from "./components/WorkWithMe";
+import KnowledgeHub from "./components/KnowledgeHub";
+import WolvesMacht from "./components/WolvesMacht";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Loader from "./components/Loader";
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 1600)
-    return () => clearTimeout(t)
-  }, [])
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="noise-overlay relative min-h-screen bg-ink-base text-white">
-      <Loader show={loading} />
+    <>
+      <AnimatePresence>
+        {!loaded && <Loader onDone={() => setLoaded(true)} />}
+      </AnimatePresence>
+
+      <AnimatedBackground />
       <Cursor />
       <ScrollProgress />
-      <AnimatedBackground />
       <Navigation />
 
       <main>
         <Hero />
         <About />
-        <Timeline />
         <Engineering />
-        <Entrepreneurship />
-        <Sports />
-        <Services />
-        <PersonalBrand />
-        <Blog />
+        <WorkWithMe />
+        <KnowledgeHub />
+        <WolvesMacht />
         <Contact />
       </main>
 
       <Footer />
-      <BackToTop />
-    </div>
-  )
+    </>
+  );
 }

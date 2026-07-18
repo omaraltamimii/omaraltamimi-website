@@ -1,114 +1,98 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
-import { NAV_ITEMS } from '../data/site'
-import { useActiveSection } from '../hooks/useActiveSection'
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { nav } from "../data/site";
+import { useActiveSection } from "../hooks/useActiveSection";
 
-const IDS = NAV_ITEMS.map((n) => n.id)
+const ids = nav.map((n) => n.id);
 
 export default function Navigation() {
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-  const active = useActiveSection(IDS)
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const active = useActiveSection(ids);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  const go = (id: string) => {
-    setOpen(false)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
-        className="fixed left-1/2 top-4 z-[75] w-[calc(100%-1.5rem)] max-w-6xl -translate-x-1/2"
-      >
-        <nav
-          className={`flex items-center justify-between rounded-full px-5 py-3 transition-all duration-500 ${
-            scrolled
-              ? 'glass-strong shadow-[0_8px_40px_-12px_rgba(0,0,0,0.8)]'
-              : 'border border-transparent bg-transparent'
-          }`}
+    <header
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-eng ${
+        scrolled
+          ? "border-b border-ink-500/60 bg-ink-900/80 backdrop-blur-md"
+          : "border-b border-transparent bg-transparent"
+      }`}
+    >
+      <nav className="container-wide flex h-16 items-center justify-between">
+        <a
+          href="#home"
+          className="font-mono text-sm tracking-widest2 text-bone-50"
         >
-          <button
-            onClick={() => go('home')}
-            className="font-display text-lg font-semibold tracking-tight text-white"
-          >
-            OAT
-            <span className="ml-1 text-ember">.</span>
-          </button>
+          OAT<span className="text-accent">.</span>
+        </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => go(item.id)}
-                className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors duration-300 ${
+        <ul className="hidden items-center gap-1 lg:flex">
+          {nav.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className={`relative block px-3 py-2 text-xs font-medium tracking-wide transition-colors duration-200 ${
                   active === item.id
-                    ? 'text-white'
-                    : 'text-muted hover:text-white'
+                    ? "text-bone-50"
+                    : "text-bone-400 hover:text-bone-50"
                 }`}
               >
+                {item.label}
                 {active === item.id && (
                   <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 rounded-full bg-ember/15 ring-1 ring-ember/30"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    layoutId="nav-active"
+                    className="absolute inset-x-2 -bottom-px h-px bg-accent"
                   />
                 )}
-                <span className="relative">{item.label}</span>
-              </button>
-            ))}
-          </div>
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-full glass text-white lg:hidden"
-            aria-label="Menu"
-          >
-            {open ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </nav>
-      </motion.header>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="flex h-10 w-10 items-center justify-center rounded-md border border-ink-500 text-bone-50 lg:hidden"
+          aria-label="Toggle menu"
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
+      </nav>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[74] flex flex-col bg-ink-base/95 px-6 pt-28 backdrop-blur-xl lg:hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden border-t border-ink-500/60 bg-ink-900/95 backdrop-blur-md lg:hidden"
           >
-            <div className="flex flex-col gap-1">
-              {NAV_ITEMS.map((item, i) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => go(item.id)}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                  className={`border-b border-white/5 py-4 text-left font-display text-2xl ${
-                    active === item.id ? 'text-ember' : 'text-white'
-                  }`}
-                >
-                  <span className="mr-3 text-xs text-muted">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  {item.label}
-                </motion.button>
+            <ul className="container-wide flex flex-col py-4">
+              {nav.map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    onClick={() => setOpen(false)}
+                    className={`block py-3 text-sm font-medium tracking-wide ${
+                      active === item.id ? "text-accent" : "text-bone-300"
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
-  )
+    </header>
+  );
 }

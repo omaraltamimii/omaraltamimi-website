@@ -1,90 +1,45 @@
-import { Instagram, Linkedin, Github, Mail } from 'lucide-react'
-import { NAV_ITEMS, SOCIALS, FULL_TITLE } from '../data/site'
-
-const SOCIAL_LINKS = [
-  { label: 'Instagram', href: SOCIALS.instagram, icon: Instagram },
-  { label: 'LinkedIn', href: SOCIALS.linkedin, icon: Linkedin },
-  { label: 'GitHub', href: SOCIALS.github, icon: Github },
-  { label: 'Email', href: SOCIALS.email, icon: Mail },
-]
+import { ArrowUp } from "lucide-react";
+import { nav, site } from "../data/site";
 
 export default function Footer() {
-  const go = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-
   return (
-    <footer className="relative border-t border-white/10 section-pad py-16">
-      <div className="container-lux">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          {/* Brand */}
+    <footer className="relative border-t border-ink-500/60 py-12">
+      <div className="container-wide">
+        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
           <div>
-            <button
-              onClick={() => go('home')}
-              className="font-display text-2xl font-semibold tracking-tight text-white"
-            >
-              Omar Al Tamimi<span className="text-ember">.</span>
-            </button>
-            <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted">
-              {FULL_TITLE}
+            <p className="font-mono text-sm tracking-widest2 text-bone-50">
+              OAT<span className="text-accent">.</span>
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {['Entrepreneur', 'Athlete', 'Creator'].map((r) => (
-                <span
-                  key={r}
-                  className="rounded-full border border-white/10 bg-white/[0.02] px-3 py-1 text-xs text-muted"
-                >
-                  {r}
-                </span>
-              ))}
-            </div>
+            <p className="mt-2 max-w-xs text-sm text-bone-400">
+              {site.role} · {site.location}
+            </p>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <p className="eyebrow mb-4">Navigation</p>
-            <ul className="grid grid-cols-2 gap-y-2 gap-x-4">
-              {NAV_ITEMS.map((n) => (
-                <li key={n.id}>
-                  <button
-                    onClick={() => go(n.id)}
-                    className="text-sm text-muted transition-colors hover:text-ember"
-                  >
-                    {n.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
+            {nav.map((n) => (
+              <a
+                key={n.id}
+                href={`#${n.id}`}
+                className="link-underline text-xs uppercase tracking-widest2"
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
 
-          {/* Socials */}
-          <div>
-            <p className="eyebrow mb-4">Social</p>
-            <div className="flex flex-col gap-2.5">
-              {SOCIAL_LINKS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target={s.href.startsWith('http') ? '_blank' : undefined}
-                  rel="noreferrer"
-                  className="group flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-white"
-                >
-                  <s.icon size={16} className="text-ember" />
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </div>
+          <a
+            href="#home"
+            className="flex items-center gap-2 rounded-md border border-ink-500 px-4 py-2 text-xs text-bone-300 transition-colors duration-300 hover:border-bone-400/60 hover:text-bone-50"
+          >
+            Back to top <ArrowUp size={14} />
+          </a>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 sm:flex-row">
-          <p className="text-xs text-muted">
-            © {new Date().getFullYear()} Omar Al Tamimi. All rights reserved.
-          </p>
-          <p className="text-xs text-muted">
-            Designed & built with discipline in Munich.
-          </p>
+        <div className="mt-10 flex flex-col items-start justify-between gap-3 border-t border-ink-500/60 pt-6 text-xs text-bone-400 sm:flex-row sm:items-center">
+          <p>© {new Date().getFullYear()} Omar Al Tamimi. All rights reserved.</p>
+          <p className="font-mono">Engineered with precision · Munich</p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
