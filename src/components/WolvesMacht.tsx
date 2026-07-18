@@ -22,7 +22,15 @@ export default function WolvesMacht() {
         >
           <div className="relative overflow-hidden rounded-2xl border border-ink-500 bg-ink-800/40 p-8">
             <div className="grid-bg-fine absolute inset-0 opacity-30" />
-            <div className="relative">
+            <div className="relative flex flex-col items-center text-center">
+              <div className="relative mb-6 h-28 w-28 overflow-hidden rounded-full border border-ink-500 bg-ink-900">
+                <img
+                  src="/images/WolvesMachtLogo.png"
+                  alt="WolvesMacht logo"
+                  className="absolute inset-0 h-full w-full object-contain p-1"
+                  loading="lazy"
+                />
+              </div>
               <p className="font-mono text-xs text-accent">WolvesMacht</p>
               <p className="mt-6 font-sans text-4xl font-semibold leading-tight tracking-tight text-bone-50">
                 {wolvesmacht.arabic}

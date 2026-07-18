@@ -4,7 +4,7 @@ export const site = {
   university: "Munich University of Applied Sciences",
   roles: [
     "Working Student — KRONES AG",
-    "Working Student — FlightLab",
+    "Team Member — FlightLab (Student Team)",
     "Mechanical Product Development",
     "Structural Development",
     "Founder of WolvesMacht",
@@ -20,7 +20,7 @@ export const site = {
   },
   companies: [
     { name: "KRONES AG", role: "Working Student — Mechanical Product Development" },
-    { name: "FlightLab", role: "Working Student — Structural Development" },
+    { name: "FlightLab", role: "Team Member — Structural Development (Student Team)" },
     { name: "Munich University of Applied Sciences", role: "B.Eng. Production & Automation Engineering" },
   ],
 };
@@ -40,7 +40,7 @@ export const quickFacts = [
   { icon: "🎓", label: "Munich University of Applied Sciences" },
   { icon: "⚙️", label: "Production & Automation Engineering" },
   { icon: "🏭", label: "Working Student — KRONES AG" },
-  { icon: "✈️", label: "Working Student — FlightLab" },
+  { icon: "✈️", label: "Team Member — FlightLab (Student Team)" },
   { icon: "🐺", label: "Founder of WolvesMacht" },
   { icon: "🌍", label: "Arabic" },
   { icon: "🇩🇪", label: "German (DSH-2 / C1)" },
@@ -105,7 +105,7 @@ export const timeline: TimelineEntry[] = [
   },
   {
     date: "Jun 2026 – Present",
-    title: "FlightLab — Working Student",
+    title: "FlightLab — Team Member (Student Team)",
     body: "Structural Development. Development of unmanned aircraft systems, lightweight structures, engineering documentation and manufacturing-ready solutions.",
     tag: "Industry",
   },
@@ -132,7 +132,7 @@ export const engineering = {
     },
     {
       company: "FlightLab",
-      role: "Working Student — Structural Development",
+      role: "Team Member — Structural Development (Student Team)",
       points: [
         "Unmanned aircraft systems",
         "Lightweight structures",
