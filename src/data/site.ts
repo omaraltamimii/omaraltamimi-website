@@ -14,9 +14,9 @@ export const site = {
   location: "Munich, Germany",
   email: "hello@omaraltamimi.com",
   socials: {
-    linkedin: "https://www.linkedin.com/in/omar-al-tamimi",
-    instagram: "https://www.instagram.com/omar.altamimi",
-    github: "https://github.com/omaraltamimi",
+    linkedin: "https://www.linkedin.com/in/omar-al-tamimi-37457428a/",
+    instagram: "https://www.instagram.com/omar.altamimii/",
+    github: "https://github.com/omaraltamimii",
   },
   companies: [
     { name: "KRONES AG", role: "Working Student — Mechanical Product Development" },
