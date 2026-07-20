@@ -12,7 +12,7 @@ export const site = {
     "Product Development",
   ],
   location: "Munich, Germany",
-  email: "hello@omaraltamimi.com",
+  email: "omaraltamimi.de@gmail.com",
   socials: {
     linkedin: "https://www.linkedin.com/in/omar-al-tamimi-37457428a/",
     instagram: "https://www.instagram.com/omar.altamimii/",
@@ -291,7 +291,7 @@ export const wolvesmacht = {
 };
 
 export const contact = {
-  email: "hello@omaraltamimi.com",
+  email: "omaraltamimi.de@gmail.com",
   socials: [
     { label: "LinkedIn", href: site.socials.linkedin },
     { label: "Instagram", href: site.socials.instagram },
