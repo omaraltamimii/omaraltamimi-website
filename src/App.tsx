@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import ErrorBoundary from "./components/ErrorBoundary";
 import AnimatedBackground from "./components/AnimatedBackground";
 import Cursor from "./components/Cursor";
 import ScrollProgress from "./components/ScrollProgress";
@@ -18,7 +19,7 @@ export default function App() {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <>
+    <ErrorBoundary>
       <AnimatePresence>
         {!loaded && <Loader onDone={() => setLoaded(true)} />}
       </AnimatePresence>
@@ -39,6 +40,6 @@ export default function App() {
       </main>
 
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 }

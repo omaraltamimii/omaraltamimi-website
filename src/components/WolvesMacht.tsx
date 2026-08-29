@@ -17,6 +17,12 @@ export default function WolvesMacht() {
     setStatus("loading");
     setMessage("");
 
+    if (!supabase) {
+      setStatus("error");
+      setMessage("Subscriptions are temporarily unavailable. Please try again later.");
+      return;
+    }
+
     const { error } = await supabase
       .from("wolvesmacht_subscribers")
       .insert({ email, owner_email: "wolvesmacht@gmail.com" });
