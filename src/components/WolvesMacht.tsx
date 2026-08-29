@@ -1,10 +1,43 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section";
 import { wolvesmacht } from "../data/site";
+import { supabase } from "../lib/supabase";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function WolvesMacht() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    setMessage("");
+
+    const { error } = await supabase
+      .from("wolvesmacht_subscribers")
+      .insert({ email, owner_email: "wolvesmacht@gmail.com" });
+
+    if (error) {
+      if (error.code === "23505") {
+        setStatus("success");
+        setMessage("You're already in the pack — watch your inbox for launch updates.");
+        setEmail("");
+        return;
+      }
+      setStatus("error");
+      setMessage("Something went wrong. Please try again in a moment.");
+      return;
+    }
+
+    setStatus("success");
+    setMessage("You're in the pack. Watch your inbox for launch updates.");
+    setEmail("");
+  }
+
   return (
     <Section
       id="wolvesmacht"
@@ -134,18 +167,44 @@ export default function WolvesMacht() {
           </p>
         </div>
         <form
-          onSubmit={(e) => e.preventDefault()}
-          className="flex w-full max-w-md items-center gap-2"
+          onSubmit={handleSubmit}
+          className="w-full max-w-md"
         >
-          <input
-            type="email"
-            required
-            placeholder="your@email.com"
-            className="w-full rounded-md border border-ink-500 bg-ink-800/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-400 focus:border-accent focus:outline-none"
-          />
-          <button type="submit" className="btn-primary whitespace-nowrap">
-            Join the Pack
-          </button>
+          <div className="flex items-center gap-2">
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (status !== "idle") setStatus("idle");
+              }}
+              disabled={status === "loading"}
+              placeholder="your@email.com"
+              className="w-full rounded-md border border-ink-500 bg-ink-800/60 px-4 py-3 text-sm text-bone-50 placeholder:text-bone-400 focus:border-accent focus:outline-none disabled:opacity-60"
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="btn-primary whitespace-nowrap disabled:opacity-60"
+            >
+              {status === "loading" ? "Joining…" : "Join the Pack"}
+            </button>
+          </div>
+          {message && (
+            <motion.p
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, ease }}
+              className={
+                status === "error"
+                  ? "mt-3 text-sm text-red-400"
+                  : "mt-3 text-sm text-accent"
+              }
+            >
+              {message}
+            </motion.p>
+          )}
         </form>
       </motion.div>
     </Section>
