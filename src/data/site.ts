@@ -1,6 +1,6 @@
 export const site = {
   name: "Omar Al Tamimi",
-  role: "Production & Automation Engineering Student",
+  role: "Production & Automation Engineering (Mechatronics) Student",
   university: "Munich University of Applied Sciences",
   roles: [
     "Working Student — KRONES AG",
@@ -21,7 +21,7 @@ export const site = {
   companies: [
     { name: "KRONES AG", role: "Working Student — Mechanical Product Development" },
     { name: "FlightLab", role: "Team Member — Structural Development (Student Team)" },
-    { name: "Munich University of Applied Sciences", role: "B.Eng. Production & Automation Engineering" },
+    { name: "Munich University of Applied Sciences", role: "B.Eng. Production & Automation Engineering (Mechatronics)" },
   ],
 };
 
@@ -38,7 +38,7 @@ export const nav = [
 export const quickFacts = [
   { icon: "📍", label: "Munich, Germany" },
   { icon: "🎓", label: "Munich University of Applied Sciences" },
-  { icon: "⚙️", label: "Production & Automation Engineering" },
+  { icon: "⚙️", label: "Production & Automation Engineering (Mechatronics)" },
   { icon: "🏭", label: "Working Student — KRONES AG" },
   { icon: "✈️", label: "Team Member — FlightLab (Student Team)" },
   { icon: "🐺", label: "Founder of WolvesMacht" },
@@ -88,7 +88,7 @@ export const timeline: TimelineEntry[] = [
   {
     date: "Oct 2023",
     title: "Munich University of Applied Sciences",
-    body: "Started Production & Automation Engineering. Discovered passion for mechanical product development, CAD engineering, product design, DFM, industrial and automation systems.",
+    body: "Started Production & Automation Engineering (Mechatronics). Discovered passion for mechanical product development, CAD engineering, product design, DFM, industrial and automation systems.",
     tag: "University",
   },
   {

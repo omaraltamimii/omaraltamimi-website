@@ -36,7 +36,7 @@ export default function Hero() {
             transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="mt-6 max-w-xl text-lg leading-relaxed text-bone-300"
           >
-            Production & Automation Engineering student in Munich. Mechanical
+            Production & Automation Engineering (Mechatronics) student in Munich. Mechanical
             product development, CAD engineering, structural development, and
             founder of WolvesMacht — building a career through engineering,
             resilience, and continuous growth.
@@ -104,7 +104,7 @@ export default function Hero() {
                   Munich University of Applied Sciences
                 </p>
                 <p className="mt-1 font-sans text-2xl font-semibold tracking-tight text-bone-50">
-                  Production & Automation Engineering
+                  Production & Automation Engineering (Mechatronics)
                 </p>
                 <div className="mt-4 grid grid-cols-2 gap-3 text-[11px] text-bone-400">
                   <div>
