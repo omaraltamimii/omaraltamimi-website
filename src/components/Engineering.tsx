@@ -22,6 +22,21 @@ export default function Engineering() {
       title="Engineering × Athletics"
       subtitle={`${site.name} is a ${site.role} student based in Munich, combining technical problem-solving with physical performance and continuous development.`}
     >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease }}
+        className="mb-10 overflow-hidden rounded-2xl border border-ink-500/50"
+      >
+        <img
+          src={engineering.image}
+          alt="Omar Al Tamimi studying engineering"
+          className="h-56 w-full object-cover object-center sm:h-72"
+          loading="lazy"
+        />
+      </motion.div>
+
       {/* Focus areas */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {engineering.focus.map((area, i) => (

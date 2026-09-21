@@ -21,6 +21,7 @@ export const nav = [
   { id: "engineering", label: "ENGINEERING" },
   { id: "about", label: "ABOUT" },
   { id: "work", label: "WORK WITH ME" },
+  { id: "contact", label: "CONTACT" },
 ];
 
 // ============================================================
@@ -30,22 +31,12 @@ export const nav = [
 export const media = {
   heroImage: "/images/Omar.Training.jpeg",
   heroVideo: null as string | null,
-  // Fitness gallery — replace with real images/videos
   fitness: [
     { label: "Muscle-Up @ 112 KG", category: "Muscle-ups", src: "/images/Omar.Training.jpeg" },
-    { label: "Weighted Dips", category: "Dips", src: "/images/Frame_1511.png" },
+    { label: "Weights", category: "Weighted dips", src: "/images/Weighted_Dips.jpeg" },
     { label: "Pull-Up Strength", category: "Pull-ups", src: "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg" },
-    { label: "Calisthenics", category: "Calisthenics", src: "/images/Omar.Training.jpeg" },
-    { label: "Athletic Training", category: "Strength", src: "/images/KronesOmar.jpg" },
-  ],
-  // Creator/UGC grid
-  creator: [
-    { label: "UGC", src: "/images/Omar.Training.jpeg" },
-    { label: "Sportswear", src: "/images/Frame_1511.png" },
-    { label: "Product", src: "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg" },
-    { label: "Short-Form", src: "/images/Omar.Training.jpeg" },
-    { label: "Training", src: "/images/KronesOmar.jpg" },
-    { label: "Ad Creative", src: "/images/Frame_1511.png" },
+    { label: "Calisthenics", category: "Bodyweight strength", src: "/images/Portrait.jpeg" },
+    { label: "Athletic Training", category: "Strength", src: "/images/Frame_1511.png" },
   ],
 };
 
@@ -118,17 +109,12 @@ export const creatorServices = [
   { title: "AD CREATIVES", body: "Short-form content suitable for paid social advertising." },
 ];
 
-export const creatorStats = [
-  { value: "150K+", label: "Recent monthly views" },
-  { value: "29K+", label: "Top Reel" },
-  { value: "Multiple", label: "Reels with 5K–14K+ views" },
-];
-
 // ============================================================
 // ENGINEERING SECTION
 // ============================================================
 
 export const engineering = {
+  image: "/images/Engineering.jpeg",
   experience: [
     {
       company: "KRONES AG",

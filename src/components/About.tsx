@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Section from "./Section";
-import { about, site, media } from "../data/site";
+import { about, site } from "../data/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -21,8 +21,8 @@ export default function About() {
         >
           <div className="relative aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-ink-500">
             <img
-              src={media.heroImage}
-              alt="Omar Al Tamimi"
+              src="/images/Portrait.jpeg"
+              alt="Portrait of Omar Al Tamimi"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
             />

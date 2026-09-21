@@ -11,10 +11,8 @@ import Stats from "./components/Stats";
 import Fitness from "./components/Fitness";
 import MuscleUpJourney from "./components/MuscleUpJourney";
 import Creator from "./components/Creator";
-import BrandCTA from "./components/BrandCTA";
 import Engineering from "./components/Engineering";
 import About from "./components/About";
-import Journey from "./components/Journey";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
@@ -40,10 +38,8 @@ export default function App() {
         <Fitness />
         <MuscleUpJourney />
         <Creator />
-        <BrandCTA />
         <Engineering />
         <About />
-        <Journey />
         <Contact />
       </main>
 
