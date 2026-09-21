@@ -7,9 +7,19 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="flex min-h-screen items-center justify-center px-6"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
-      <div className="max-w-2xl text-center">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/this_one_on_the_right_at_first.jpeg')" }}
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-ink-950/75"
+      />
+
+      <div className="relative z-10 max-w-2xl text-center">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -41,7 +51,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease, delay: 0.35 }}
-          className="mt-2 text-sm text-bone-400"
+          className="mt-2 text-sm text-bone-200"
         >
           {site.role}
         </motion.p>
@@ -50,7 +60,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, ease, delay: 0.5 }}
-          className="mx-auto mt-8 max-w-md text-base leading-relaxed text-bone-300"
+          className="mx-auto mt-8 max-w-md text-base leading-relaxed text-bone-100"
         >
           {site.intro}
         </motion.p>
