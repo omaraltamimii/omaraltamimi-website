@@ -6,10 +6,15 @@ import { useActiveSection } from "../hooks/useActiveSection";
 
 const ids = nav.map((n) => n.id);
 
-export default function Navigation() {
+export default function Navigation({ onNavClick }: { onNavClick?: (id: string) => void }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const active = useActiveSection(ids);
+
+  const handleNav = (id: string) => {
+    setOpen(false);
+    if (onNavClick) onNavClick(id);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -31,7 +36,7 @@ export default function Navigation() {
           <a
             key={item.id}
             href={`#${item.id}`}
-            onClick={() => setOpen(false)}
+            onClick={() => handleNav(item.id)}
             className={`relative hidden py-2 text-xs font-medium uppercase tracking-wider transition-colors duration-200 sm:block ${
               active === item.id ? "text-bone-50" : "text-bone-400 hover:text-bone-50"
             }`}
@@ -69,7 +74,7 @@ export default function Navigation() {
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  onClick={() => setOpen(false)}
+                  onClick={() => handleNav(item.id)}
                   className={`py-3 text-sm font-medium uppercase tracking-wider ${
                     active === item.id ? "text-accent" : "text-bone-300"
                   }`}
