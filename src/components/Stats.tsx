@@ -7,7 +7,7 @@ type Stat = { value: string; label: string };
 
 function StatRow({ items, delay = 0 }: { items: Stat[]; delay?: number }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-px bg-ink-500/40 border border-ink-500/40">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-px bg-ink-500/40 border border-ink-500/40">
       {items.map((stat, i) => (
         <motion.div
           key={stat.label}
