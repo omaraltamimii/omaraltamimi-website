@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { nav } from "../data/site";
+import { nav, site } from "../data/site";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 const ids = nav.map((n) => n.id);
@@ -22,16 +22,16 @@ export default function Navigation() {
     <header
       className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ease-eng ${
         scrolled
-          ? "border-b border-ink-500/60 bg-ink-900/80 backdrop-blur-md"
+          ? "border-b border-ink-500/50 bg-ink-950/90 backdrop-blur-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
       <nav className="container-wide flex h-16 items-center justify-between">
         <a
-          href="#home"
-          className="font-mono text-sm tracking-widest2 text-bone-50"
+          href="#top"
+          className="font-sans text-sm font-bold uppercase tracking-widest2 text-bone-50"
         >
-          OAT<span className="text-accent">.</span>
+          {site.shortName}
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">
@@ -39,7 +39,7 @@ export default function Navigation() {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
-                className={`relative block px-3 py-2 text-xs font-medium tracking-wide transition-colors duration-200 ${
+                className={`relative block px-3 py-2 text-xs font-medium uppercase tracking-wider transition-colors duration-200 ${
                   active === item.id
                     ? "text-bone-50"
                     : "text-bone-400 hover:text-bone-50"
@@ -73,7 +73,7 @@ export default function Navigation() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden border-t border-ink-500/60 bg-ink-900/95 backdrop-blur-md lg:hidden"
+            className="overflow-hidden border-t border-ink-500/50 bg-ink-950/95 backdrop-blur-md lg:hidden"
           >
             <ul className="container-wide flex flex-col py-4">
               {nav.map((item) => (
@@ -81,7 +81,7 @@ export default function Navigation() {
                   <a
                     href={`#${item.id}`}
                     onClick={() => setOpen(false)}
-                    className={`block py-3 text-sm font-medium tracking-wide ${
+                    className={`block py-3 text-sm font-medium uppercase tracking-wider ${
                       active === item.id ? "text-accent" : "text-bone-300"
                     }`}
                   >

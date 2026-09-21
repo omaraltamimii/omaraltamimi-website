@@ -6,12 +6,15 @@ import Cursor from "./components/Cursor";
 import ScrollProgress from "./components/ScrollProgress";
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Story from "./components/Story";
+import Intro from "./components/Intro";
+import Stats from "./components/Stats";
+import Fitness from "./components/Fitness";
+import MuscleUpJourney from "./components/MuscleUpJourney";
+import Creator from "./components/Creator";
+import BrandCTA from "./components/BrandCTA";
 import Engineering from "./components/Engineering";
-import WorkWithMe from "./components/WorkWithMe";
-import KnowledgeHub from "./components/KnowledgeHub";
-import WolvesMacht from "./components/WolvesMacht";
+import About from "./components/About";
+import Journey from "./components/Journey";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
@@ -32,12 +35,15 @@ export default function App() {
 
       <main>
         <Hero />
-        <About />
-        <Story />
+        <Intro />
+        <Stats />
+        <Fitness />
+        <MuscleUpJourney />
+        <Creator />
+        <BrandCTA />
         <Engineering />
-        <WorkWithMe />
-        <KnowledgeHub />
-        <WolvesMacht />
+        <About />
+        <Journey />
         <Contact />
       </main>
 

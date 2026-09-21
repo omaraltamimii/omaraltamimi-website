@@ -1,143 +1,104 @@
 import { motion } from "framer-motion";
-import { Cog, Wrench, Code as Code2, Layers } from "lucide-react";
+import { Cog, Code, Layers, Cpu, Wrench, Building2 } from "lucide-react";
+import type { ReactNode } from "react";
 import Section from "./Section";
-import { engineering } from "../data/site";
+import { engineering, site } from "../data/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
+
+const icons: ReactNode[] = [
+  <Cog size={18} />,
+  <Layers size={18} />,
+  <Cpu size={18} />,
+  <Cog size={18} />,
+  <Wrench size={18} />,
+  <Building2 size={18} />,
+];
 
 export default function Engineering() {
   return (
     <Section
       id="engineering"
-      eyebrow="Engineering Studio"
-      title="Industrial experience, built on precision"
-      subtitle="Mechanical product development, CAD engineering and structural development — across industrial machinery and unmanned aircraft systems."
+      title="Engineering × Athletics"
+      subtitle={`${site.name} is a ${site.role} student based in Munich, combining technical problem-solving with physical performance and continuous development.`}
     >
-      <div className="grid gap-10 lg:grid-cols-2">
-        <div className="flex flex-col gap-4">
-          {engineering.experience.map((exp, i) => (
-            <motion.div
-              key={exp.company}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, ease, delay: i * 0.08 }}
-              className="card p-6"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <p className="font-mono text-xs text-accent">
-                    {exp.company}
-                  </p>
-                  <h3 className="mt-1 font-sans text-lg font-semibold text-bone-50">
-                    {exp.role}
-                  </h3>
-                </div>
-                <Cog size={18} className="text-bone-400" />
-              </div>
-              <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {exp.points.map((p) => (
-                  <li
-                    key={p}
-                    className="flex items-center gap-2 text-sm text-bone-300"
-                  >
-                    <span className="h-1 w-1 rounded-full bg-accent" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Block
-            icon={<Layers size={18} />}
-            title="Projects"
-            items={engineering.projects}
-          />
-          <Block
-            icon={<Code2 size={18} />}
-            title="Software"
-            items={engineering.software}
-          />
-          <Block
-            icon={<Wrench size={18} />}
-            title="Skills"
-            items={engineering.skills}
-          />
-          <div className="card flex flex-col justify-between p-6">
-            <p className="eyebrow">Gallery</p>
-            <div className="mt-4 grid grid-cols-3 gap-2">
-              {[
-                "/images/Frame_1511.png",
-                "/images/KronesOmar.jpg",
-                "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg",
-                "/images/Frame_1511.png",
-                "/images/KronesOmar.jpg",
-                "/images/WhatsApp_Image_2025-02-24_at_22.33.53.jpeg",
-              ].map((src, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-square overflow-hidden rounded-md border border-ink-500/70"
-                >
-                  <img
-                    src={src}
-                    alt={`Engineering work ${i + 1}`}
-                    className="absolute inset-0 h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      background:
-                        "linear-gradient(140deg, rgba(22,32,44,0.1), rgba(10,15,20,0.55))",
-                    }}
-                  />
-                </div>
-              ))}
+      {/* Focus areas */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {engineering.focus.map((area, i) => (
+          <motion.div
+            key={area}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease, delay: (i % 3) * 0.08 }}
+            className="card group flex items-center gap-4 p-6"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-md border border-ink-500 text-bone-400 transition-colors duration-300 group-hover:border-accent group-hover:text-accent">
+              {icons[i % icons.length]}
             </div>
-            <p className="mt-4 text-xs text-bone-400">
-              CAD renders, technical drawings and manufacturing — coming soon.
+            <p className="font-sans text-sm font-bold uppercase tracking-tight text-bone-50">
+              {area}
             </p>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Experience + Tools */}
+      <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        {/* Experience */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease }}
+          className="card p-7"
+        >
+          <p className="eyebrow mb-4">Industrial Experience</p>
+          {engineering.experience.map((exp) => (
+            <div key={exp.company} className="border-b border-ink-500/40 pb-4 last:border-0 last:pb-0">
+              <p className="font-sans text-lg font-bold text-bone-50">{exp.company}</p>
+              <p className="mt-1 text-sm text-bone-400">{exp.role}</p>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Tools */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5, ease, delay: 0.08 }}
+          className="card p-7"
+        >
+          <p className="eyebrow mb-4">Tools & Technologies</p>
+          <div className="space-y-5">
+            <ToolGroup label="CAD" items={engineering.tools.cad} icon={<Layers size={14} />} />
+            <ToolGroup label="Embedded Systems" items={engineering.tools.embedded} icon={<Cpu size={14} />} />
+            <ToolGroup label="Programming" items={engineering.tools.programming} icon={<Code size={14} />} />
           </div>
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
 }
 
-function Block({
-  icon,
-  title,
-  items,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  items: string[];
-}) {
+function ToolGroup({ label, items, icon }: { label: string; items: string[]; icon: ReactNode }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, ease }}
-      className="card p-6"
-    >
+    <div>
       <div className="flex items-center gap-2 text-bone-400">
         {icon}
-        <p className="eyebrow">{title}</p>
+        <p className="font-mono text-[11px] uppercase tracking-widest2">{label}</p>
       </div>
-      <ul className="mt-4 flex flex-wrap gap-2">
+      <ul className="mt-2 flex flex-wrap gap-2">
         {items.map((it) => (
           <li
             key={it}
-            className="rounded-md border border-ink-500/70 bg-ink-800/60 px-2.5 py-1 text-xs text-bone-300"
+            className="rounded-md border border-ink-500/60 bg-ink-800/50 px-3 py-1.5 text-xs text-bone-300"
           >
             {it}
           </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 }

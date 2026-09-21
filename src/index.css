@@ -9,18 +9,18 @@
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-ink-900 text-bone-50 font-sans antialiased;
+    @apply bg-ink-950 text-bone-50 font-sans antialiased;
     font-feature-settings: "ss01", "cv01", "cv03";
   }
   ::selection {
     @apply bg-accent/30 text-bone-50;
   }
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   ::-webkit-scrollbar-track {
-    @apply bg-ink-900;
+    @apply bg-ink-950;
   }
   ::-webkit-scrollbar-thumb {
     @apply bg-ink-500 rounded-full;
@@ -40,24 +40,24 @@
   }
 
   .section-title {
-    @apply font-sans text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tightest text-bone-50 leading-[1.05];
+    @apply font-sans text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tightest text-bone-50 leading-[1.05];
   }
 
   .card {
-    @apply rounded-xl border border-ink-500/70 bg-ink-700/60 backdrop-blur-sm transition-colors duration-300 ease-eng;
+    @apply rounded-xl border border-ink-500/60 bg-ink-800/50 backdrop-blur-sm transition-all duration-300 ease-eng;
   }
   .card:hover {
-    @apply border-ink-500;
+    @apply border-ink-400;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-medium tracking-wide transition-all duration-300 ease-eng;
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-6 py-3.5 text-sm font-medium uppercase tracking-wider transition-all duration-300 ease-eng;
   }
   .btn-primary {
-    @apply btn bg-accent text-ink-900 hover:bg-accent-400;
+    @apply btn bg-accent text-ink-950 hover:bg-accent-400;
   }
   .btn-ghost {
-    @apply btn border border-ink-500 text-bone-50 hover:border-bone-400/60 hover:bg-ink-700/60;
+    @apply btn border border-ink-500 text-bone-50 hover:border-bone-300/40 hover:bg-ink-800/50;
   }
 
   .link-underline {
@@ -73,15 +73,24 @@
 
   .grid-bg {
     background-image:
-      linear-gradient(to right, rgba(38, 52, 69, 0.35) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(38, 52, 69, 0.35) 1px, transparent 1px);
+      linear-gradient(to right, rgba(40, 46, 54, 0.25) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(40, 46, 54, 0.25) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .grid-bg-fine {
     background-image:
-      linear-gradient(to right, rgba(38, 52, 69, 0.18) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(38, 52, 69, 0.18) 1px, transparent 1px);
+      linear-gradient(to right, rgba(40, 46, 54, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(40, 46, 54, 0.12) 1px, transparent 1px);
     background-size: 14px 14px;
+  }
+
+  .media-placeholder {
+    @apply relative overflow-hidden bg-ink-800;
+  }
+  .media-placeholder::after {
+    content: "";
+    @apply absolute inset-0;
+    background: linear-gradient(135deg, rgba(17,20,24,0.2), rgba(11,13,16,0.6));
   }
 }
 
@@ -92,5 +101,9 @@
   .mask-fade-b {
     -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+  .mask-fade-t {
+    -webkit-mask-image: linear-gradient(to top, black 70%, transparent 100%);
+    mask-image: linear-gradient(to top, black 70%, transparent 100%);
   }
 }
