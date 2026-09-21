@@ -11,8 +11,8 @@ export default function Home() {
     >
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/this_one_on_the_right_at_first.jpeg')" }}
+        className="absolute inset-0 bg-cover"
+        style={{ backgroundImage: "url('/images/this_one_on_the_right_at_first.jpeg')", backgroundPosition: "center 70%" }}
       />
       <div
         aria-hidden="true"
