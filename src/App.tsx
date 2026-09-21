@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import About from "./components/About";
 import WhatIDo from "./components/WhatIDo";
+import Stats from "./components/Stats";
 import Collab from "./components/Collab";
 import Footer from "./components/Footer";
 
@@ -21,6 +22,7 @@ export default function App() {
         <Home />
         <About />
         <WhatIDo />
+        <Stats />
         <Collab />
       </main>
 
