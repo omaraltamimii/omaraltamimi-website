@@ -32,6 +32,7 @@ export const athleticStats = [
   { value: "13", label: "Pull-ups" },
   { value: "30", label: "Dips" },
   { value: "1", label: "Muscle-up" },
+  { value: "50 kg × 5", label: "Weighted Dips" },
 ];
 
 export const contentReach = [
